@@ -101,10 +101,9 @@ const EditDialog = ({ open, onClose, item, editedItem, onTextFieldChange, onSave
 
     return (
         <Dialog open={open} onClose={handleClose}>
-            <DialogTitle>Edit Item</DialogTitle>
+            <DialogTitle>Edit</DialogTitle>
             <DialogContent>
-                <Typography>Editing Item: {item && item.name}</Typography>
-                <TextField
+            <TextField
                     label="Quantity"
                     value={editedItem && editedItem.name}
                     onChange={(e) => onTextFieldChange(e, 'quantity')}
