@@ -9,11 +9,20 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.15.11",
+    "@mui/material": "^5.15.11",
+    "@tanstack/react-query": "^4.35.3",
+    "antd": "^5.14.2",
+    "axios": "^1.6.7",
+    "chart.js": "^4.4.2",
+    "next": "14.1.0",
     "react": "^18",
-    "react-dom": "^18",
-    "next": "14.1.0"
+    "react-dom": "^18"
   },
   "devDependencies": {
+    "@types/node": "20.11.22",
     "eslint": "^8",
     "eslint-config-next": "14.1.0"
   }
