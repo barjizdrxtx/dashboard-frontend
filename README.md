@@ -16,6 +16,11 @@ bun dev
 
 ![Dashboard Screenshot](images/dashboard-1.png)
 
+![Dashboard Screenshot](images/dashboard-2.png)
+
+
+
+
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
