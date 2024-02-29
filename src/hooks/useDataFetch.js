@@ -5,7 +5,7 @@ export const useDataFetch = (url) => {
 
     const { isLoading, error, data: fetchedData, refetch } = useQuery([url], () =>
 
-        fetch("http://13.126.70.16:4000/api/" + url, {
+        fetch("https://api.onetouchemart.com/api/" + url, {
             headers: {
                 'Content-Type': 'application/json',
             },
