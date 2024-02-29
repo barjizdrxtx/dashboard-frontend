@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
 
   const queryClient = new QueryClient();
 
-  axios.defaults.baseURL = "https://api.onetouchemart.com/";
+  axios.defaults.baseURL = "https://api.onetouchemart.com/api/";
 
   return (
 
