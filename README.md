@@ -14,13 +14,6 @@ pnpm dev
 bun dev
 ```
 
-![Dashboard Screenshot](images/dashboard-1.png)
-
-![Dashboard Screenshot](images/dashboard-2.png)
-
-
-Sure, here's a simpler version:
-
 Monthly Quantity Dashboard
 This is a simple dashboard that shows how many items are used or sold each month.
 
@@ -34,3 +27,9 @@ Chart.js: Library for creating charts.
 React: Library for building interfaces.
 Material-UI: Framework for UI components.
 Axios: For making HTTP requests.
+
+![Dashboard Screenshot](images/dashboard-1.png)
+
+![Dashboard Screenshot](images/dashboard-2.png)
+
+
