@@ -3,11 +3,10 @@ import Chart from 'chart.js/auto';
 import { Grid } from '@mui/material';
 
 export const PieChart = ({ data }) => {
-
     const chartRef = useRef(null);
     const chartInstanceRef = useRef(null);
 
-    const monthFrequency = calculateMonthFrequency(data);
+    const monthQuantity = calculateMonthQuantity(data);
 
     useEffect(() => {
         const ctx = chartRef.current?.getContext('2d');
@@ -20,11 +19,11 @@ export const PieChart = ({ data }) => {
             chartInstanceRef.current = new Chart(ctx, {
                 type: 'pie',
                 data: {
-                    labels: monthFrequency.map((entry) => entry.name),
+                    labels: monthQuantity.map((entry) => entry.name),
                     datasets: [
                         {
-                            label: 'Frequency',
-                            data: monthFrequency.map((entry) => entry.value),
+                            label: 'Quantity',
+                            data: monthQuantity.map((entry) => entry.value),
                             backgroundColor: [
                                 '#FF6384',
                                 '#36A2EB',
@@ -57,7 +56,7 @@ export const PieChart = ({ data }) => {
                 chartInstanceRef.current.destroy();
             }
         };
-    }, [monthFrequency]);
+    }, [monthQuantity]);
 
     return (
         <Grid container justifyContent="center" sx={{
@@ -71,18 +70,19 @@ export const PieChart = ({ data }) => {
     );
 };
 
-const calculateMonthFrequency = (data) => {
-    const frequency = {};
+const calculateMonthQuantity = (data) => {
+    const quantityPerMonth = {};
 
     data?.forEach((entry) => {
         const month = new Date(entry.createdAt).toLocaleString('default', { month: 'long' });
+        const quantity = entry.quantity || 0;
 
-        if (frequency[month]) {
-            frequency[month] += 1;
+        if (quantityPerMonth[month]) {
+            quantityPerMonth[month] += quantity;
         } else {
-            frequency[month] = 1;
+            quantityPerMonth[month] = quantity;
         }
     });
 
-    return Object.keys(frequency).map((key) => ({ name: key, value: frequency[key] }));
+    return Object.keys(quantityPerMonth).map((key) => ({ name: key, value: quantityPerMonth[key] }));
 };

@@ -2,20 +2,18 @@ import React, { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
 import { Grid } from '@mui/material';
 
-export const LineGraph = ({ data }) => {
+export const LineChart = ({ data }) => {
 
     const chartRef = useRef(null);
 
-
     const chartInstanceRef = useRef(null);
 
-    const monthFrequency = calculateMonthFrequency(data);
+    const monthQuantity = calculateMonthQuantity(data);
 
     useEffect(() => {
         const ctx = chartRef.current?.getContext('2d');
 
         if (ctx) {
-
             if (chartInstanceRef.current) {
                 chartInstanceRef.current.destroy();
             }
@@ -23,28 +21,36 @@ export const LineGraph = ({ data }) => {
             chartInstanceRef.current = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: monthFrequency.map((entry) => entry.name),
+                    labels: monthQuantity.map((entry) => entry.name),
                     datasets: [
                         {
-                            label: 'Frequency',
-                            data: monthFrequency.map((entry) => entry.value),
-                            fill: false, 
-                            borderColor: '#0088FE', 
-                            borderWidth: 2,
-                            pointBackgroundColor: '#0088FE', 
+                            label: 'Quantity',
+                            data: monthQuantity.map((entry) => entry.value),
+                            fill: false,
+                            borderColor: '#0088FE',
+                            tension: 0.4,
                         },
                     ],
                 },
                 options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Quantity',
+                            },
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Month',
+                            },
+                        },
+                    },
                     plugins: {
                         legend: {
-                            display: true,
-                            position: 'top',
-                            labels: {
-                                color: 'rgba(0, 0, 0, 0.8)',
-                                boxWidth: 12,
-                                padding: 10,
-                            },
+                            display: false,
                         },
                     },
                 },
@@ -56,7 +62,7 @@ export const LineGraph = ({ data }) => {
                 chartInstanceRef.current.destroy();
             }
         };
-    }, [monthFrequency]);
+    }, [monthQuantity]);
 
     return (
         <Grid container justifyContent="center" sx={{
@@ -70,18 +76,19 @@ export const LineGraph = ({ data }) => {
     );
 };
 
-const calculateMonthFrequency = (data) => {
-    const frequency = {};
+const calculateMonthQuantity = (data) => {
+    const quantityPerMonth = {};
 
     data?.forEach((entry) => {
         const month = new Date(entry.createdAt).toLocaleString('default', { month: 'long' });
+        const quantity = entry.quantity || 0;
 
-        if (frequency[month]) {
-            frequency[month] += 1;
+        if (quantityPerMonth[month]) {
+            quantityPerMonth[month] += quantity;
         } else {
-            frequency[month] = 1;
+            quantityPerMonth[month] = quantity;
         }
     });
 
-    return Object.keys(frequency).map((key) => ({ name: key, value: frequency[key] }));
+    return Object.keys(quantityPerMonth).map((key) => ({ name: key, value: quantityPerMonth[key] }));
 };
