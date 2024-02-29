@@ -32,4 +32,6 @@ Axios: For making HTTP requests.
 
 ![Dashboard Screenshot](images/dashboard-2.png)
 
+![Dashboard Screenshot](images/dashboard-3.png)
+
 
