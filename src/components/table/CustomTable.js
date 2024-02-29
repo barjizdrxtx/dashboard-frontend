@@ -105,7 +105,7 @@ const EditDialog = ({ open, onClose, item, editedItem, onTextFieldChange, onSave
             <DialogContent>
             <TextField
                     label="Quantity"
-                    value={editedItem && editedItem.name}
+                    value={editedItem && editedItem.quantity}
                     onChange={(e) => onTextFieldChange(e, 'quantity')}
                     fullWidth
                     margin="normal"
