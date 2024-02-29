@@ -5,7 +5,7 @@ export const useDataFetch = (url) => {
 
     const { isLoading, error, data: fetchedData, refetch } = useQuery([url], () =>
 
-        fetch(process.env.NEXT_PUBLIC_API_BASE_URL + url, {
+        fetch("http://13.126.70.16:4000/api/" + url, {
             headers: {
                 'Content-Type': 'application/json',
             },

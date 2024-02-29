@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
 
   const queryClient = new QueryClient();
 
-  axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_BASE_URL
+  axios.defaults.baseURL = "http://13.126.70.16:4000/api/";
 
   return (
 

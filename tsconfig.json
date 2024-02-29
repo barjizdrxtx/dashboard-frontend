@@ -27,7 +27,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/components/table/CustomTable.js", "src/app/page.js", "src/app/layout.js", "src/components/chart/Graph.js", "src/components/chart/PieChart.js", "src/hooks/useDataFetch.js"  ],
+, "src/components/table/CustomTable.js", "src/app/page.js", "src/app/layout.tsx", "src/components/chart/Graph.js", "src/components/chart/PieChart.js", "src/hooks/useDataFetch.js"  ],
   "exclude": [
     "node_modules"
   ]
